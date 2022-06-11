@@ -1,17 +1,21 @@
 #singleInstance Force
-Gui, add, Text,, Enter name:
-Gui, Add, Edit, vname
-Gui, add, Text,, Enter width:
-Gui, Add, Edit, vwidth
-Gui, Add, Button, gsubmit, submit
-Gui, Show
-return
 
-Submit:
-GuiControlGet, name
-GuiControlGet, width
-Run dialer.ahk %name% %width%
-Gui Destroy
-ExitApp
+loop 
+{
+  if !FileExist("config.txt")
+  {
+    InputBox, userName, Name, What is your first name?
+    FileAppend, %userName%, config.txt
+  }
+  else 
+  {
+    InputBox, width, Width, What is the width
+    FileReadLine, name, config.txt, 1
+    Run dialer.ahk %name% %width%
+    ExitApp
+    return
+  }
+}
+
 
     
