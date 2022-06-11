@@ -44,9 +44,20 @@ Send {Enter}
 Sleep 50
 Send, {Space}
 Sleep 50
-Send ^\
+;Type the date
+FormatTime, TimeString,, h:mm
+Send, %TimeString%
 Sleep 50
 Send {enter}
 Send {up}
 Send {right}
+
+
+;Shortcut to be used when a call has gone to answer phone
+^]::
+Send, {Enter}
+Send, AP
+Send, {Enter}
+Sleep 10
+Send {LCtrl Down}{LShift Down}{LAlt Down}~{LAlt Up}{LCtrl Up}{LShift Up}
 
