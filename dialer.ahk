@@ -3,8 +3,11 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+#singleInstance Force ; Skips the prompt of starting a new instance
+
 sleepSpreadSheetTraversal := 50
-widthOfSpreadSheet := 8
+widthOfSpreadSheet = %2%
+callerName = %1%
 
 ^+!`::
 WinWait ahk_exe chrome.exe
@@ -34,23 +37,34 @@ Sleep sleepSpreadSheetTraversal
 WinWait ahk_exe chrome.exe
 WinActivate
 Sleep 200
-Loop % widthOfSpreadSheet-1
+
+Loop % widthOfSpreadSheet-2
   {
     Send, {Right}
     Sleep sleepSpreadSheetTraversal 
   }
-Sleep 300
+Sleep sleepSpreadSheetTraversal 
+Send %callerName%
+Sleep sleepSpreadSheetTraversal 
 Send {Enter}
-Sleep 50
+Sleep sleepSpreadSheetTraversal 
+Send {Right}
+Sleep sleepSpreadSheetTraversal 
+Send {Up}
+
+Sleep sleepSpreadSheetTraversal 
+Send {Enter}
+Sleep sleepSpreadSheetTraversal 
 Send, {Space}
-Sleep 50
+Sleep sleepSpreadSheetTraversal 
 ;Type the date
-FormatTime, TimeString,, h:mm
+FormatTime, TimeString,, dd/MM/yy h:mm
 Send, %TimeString%
-Sleep 50
+Sleep sleepSpreadSheetTraversal 
 Send {enter}
 Send {up}
 Send {right}
+return
 
 
 ;Shortcut to be used when a call has gone to answer phone
