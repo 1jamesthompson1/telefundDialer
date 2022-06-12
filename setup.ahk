@@ -11,7 +11,7 @@ loop
   {
     InputBox, width, Width, What is the width
     FileReadLine, name, config.txt, 1
-    Run dialer.ahk %name% %width%
+    Run dialer.exe %name% %width%
     ExitApp
     return
   }
