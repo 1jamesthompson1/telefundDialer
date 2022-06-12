@@ -1,3 +1,4 @@
+SetWorkingDir %A_ScriptDir% 
 #singleInstance Force
 
 loop 
