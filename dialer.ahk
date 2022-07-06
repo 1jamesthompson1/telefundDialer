@@ -5,6 +5,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #singleInstance Force ; Skips the prompt of starting a new instance
 
+Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
+
 loop 
 {
   if !FileExist("config.txt")
