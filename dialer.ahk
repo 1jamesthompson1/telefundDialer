@@ -5,10 +5,24 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #singleInstance Force ; Skips the prompt of starting a new instance
 
+loop 
+{
+  if !FileExist("config.txt")
+  {
+    InputBox, userName, Name, What is your first name?
+    FileAppend, %userName%, config.txt
+    FileAppend, `n1, config.txt
+  }
+  else 
+  {
+    InputBox, widthOfSpreadSheet, Width, What is the width
+    FileReadLine, callerName, config.txt, 1
+    FileReadLine, preNumber, config.txt, 2
+    break
+  }
+}
+
 sleepSpreadSheetTraversal := 100
-widthOfSpreadSheet = %2%
-callerName = %1%
-preNumber = %3%
 
 ^+!`::
 WinWait ahk_exe chrome.exe
