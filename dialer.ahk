@@ -66,10 +66,6 @@ Sleep sleepSpreadSheetTraversal
 Send {Up}
 
 Sleep sleepSpreadSheetTraversal 
-Send {Enter}
-Sleep sleepSpreadSheetTraversal 
-Send, {Space}
-Sleep sleepSpreadSheetTraversal 
 
 ;Type the date
 FormatTime, TimeString,, dd/MM/yy h:mm
