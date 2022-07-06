@@ -5,7 +5,7 @@ This is a little ahk script that is used to automate the process we use in our w
 A proper guide will be maintained and up to date in a google doc found here:
 
 
-###Commit messages
+### Commit messages
 They will be sorted into category with these emojis found below
 
 ➕ `:heavy_plus_sign:` when adding a file or implementing a feature<br>
@@ -16,6 +16,6 @@ They will be sorted into category with these emojis found below
 ❌ `:x:` when removing code or files<br>
 
 
-###Versioning
-I am using semmantic versioning. No originality here just using the guidline found at https://semver.org/.
+### Versioning
+I am using semmantic versioning. No originality here just using the guidline found at https://semver.org/.  
 In short this will mean Major will be big upates. Minor are any updates that arent too big and also arent backward compatitlbe. Lastely patches are simple fixes that are not required but might fixa little behavouir. Always should be backward compatible.
