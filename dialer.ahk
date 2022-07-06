@@ -12,12 +12,14 @@ loop
     InputBox, userName, Name, What is your first name?
     FileAppend, %userName%, config.txt
     FileAppend, `n1, config.txt
+    FileAPpend, `nchrome.exe, config.txt
   }
   else 
   {
     InputBox, widthOfSpreadSheet, Width, What is the width
     FileReadLine, callerName, config.txt, 1
     FileReadLine, preNumber, config.txt, 2
+    FileReadLine, browser, config.txt, 3
     break
   }
 }
@@ -46,7 +48,7 @@ return
 
 
 dial:
-	WinWait ahk_exe chrome.exe
+	WinWait ahk_exe %browser%
 	WinActivate
 	Sleep sleepSpreadSheetTraversal 
 	Loop, %widthOfSpreadSheet%
@@ -75,7 +77,8 @@ dial:
 	Sleep sleepSpreadSheetTraversal 
 	Send, {enter}
 	Sleep sleepSpreadSheetTraversal 
-	WinWait ahk_exe chrome.exe
+
+	WinWait ahk_exe %browser%
 	WinActivate
 	Sleep sleepSpreadSheetTraversal 
 
