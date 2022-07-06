@@ -24,8 +24,10 @@ loop
 
 sleepSpreadSheetTraversal := 100
 
+Rctrl::F14
+
 ;Default shortcut for dial
-^+!`::
+F14::
 Gosub dial
 return
 
