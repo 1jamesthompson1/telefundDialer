@@ -63,8 +63,15 @@ dial:
 	WinActivate
 	Sleep sleepSpreadSheetTraversal 
 	Send, %preNUmber%
+	Sleep sleepSpreadSheetTraversal
+	firstCharacter = Substr(%clipboard%,1,1)
+	if (firstCharacter != "0")
+	{	
+ 		Send, 0
+	}
+	Sleep sleepSpreadSheetTraversal
 	Sleep sleepSpreadSheetTraversal 
-	Send, ^v
+	Send, %clipboard%
 	Sleep sleepSpreadSheetTraversal 
 	Send, {enter}
 	Sleep sleepSpreadSheetTraversal 
