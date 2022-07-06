@@ -5,9 +5,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #singleInstance Force ; Skips the prompt of starting a new instance
 
-sleepSpreadSheetTraversal := 50
+sleepSpreadSheetTraversal := 100
 widthOfSpreadSheet = %2%
 callerName = %1%
+preNumber = %3%
 
 ^+!`::
 WinWait ahk_exe chrome.exe
@@ -19,16 +20,14 @@ Loop, %widthOfSpreadSheet%
     Sleep sleepSpreadSheetTraversal 
   }
 
-Sleep 300
+Sleep sleepSpreadSheetTraversal 
 Send ^c
-Sleep 50
+Sleep sleepSpreadSheetTraversal 
 
 WinWait FormCallAssistance ahk_exe UCS_Client.exe
 WinActivate
 Sleep sleepSpreadSheetTraversal 
-Send, 1
-Sleep sleepSpreadSheetTraversal 
-Send, 0
+Send, %preNUmber%
 Sleep sleepSpreadSheetTraversal 
 Send, ^v
 Sleep sleepSpreadSheetTraversal 
@@ -36,7 +35,7 @@ Send, {enter}
 Sleep sleepSpreadSheetTraversal 
 WinWait ahk_exe chrome.exe
 WinActivate
-Sleep 200
+Sleep sleepSpreadSheetTraversal 
 
 Loop % widthOfSpreadSheet-2
   {
@@ -57,12 +56,15 @@ Send {Enter}
 Sleep sleepSpreadSheetTraversal 
 Send, {Space}
 Sleep sleepSpreadSheetTraversal 
+
 ;Type the date
 FormatTime, TimeString,, dd/MM/yy h:mm
 Send, %TimeString%
 Sleep sleepSpreadSheetTraversal 
 Send {enter}
+Sleep sleepSpreadSheetTraversal  
 Send {up}
+Sleep sleepSpreadSheetTraversal 
 Send {right}
 return
 
@@ -72,6 +74,6 @@ return
 Send, {Enter}
 Send, AP
 Send, {Enter}
-Sleep 10
+Sleep Sleep sleepSpreadSheetTraversal 
 Send {LCtrl Down}{LShift Down}{LAlt Down}~{LAlt Up}{LCtrl Up}{LShift Up}
 
