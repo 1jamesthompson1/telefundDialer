@@ -7,7 +7,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 
-programName := "Dialer v1.0.1"
+programName := "Dialer v1.0.2"
 sleepSpreadSheetTraversal := 100
 
 ;Intro loop that will either retrive name and width or jsut width
