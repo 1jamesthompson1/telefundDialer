@@ -14,6 +14,8 @@ loop
   if !FileExist("config.txt")
   {
     InputBox, userName, %programName%, What is your first name?
+    if ErrorLevel
+      ExitApp
     FileAppend, %userName%, config.txt
     FileAppend, `n1, config.txt
     FileAPpend, `nchrome.exe, config.txt
@@ -21,6 +23,8 @@ loop
   else 
   {
     InputBox, widthOfSpreadSheet, %programName%, What is the width
+    if ErrorLevel
+      ExitApp
     FileReadLine, callerName, config.txt, 1
     FileReadLine, preNumber, config.txt, 2
     FileReadLine, browser, config.txt, 3
