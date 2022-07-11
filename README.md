@@ -59,7 +59,7 @@ They will be sorted into a category with these emojis found below
 ➕ `:heavy_plus_sign:` when adding a file or implementing a feature<br>
 🔨 `:hammer:` when fixing a bug or issue<br>
 📜 `:scroll:` when updating docs, readme or comments<br>
-✅ `:white_check_mark:` when a assignment is completed and handed in<br>
+✅ `:white_check_mark:` when a release is made<br>
 👕 `:shirt:` when refactoring or removing linter warnings<br>
 ❌ `:x:` when removing code or files<br>
 
