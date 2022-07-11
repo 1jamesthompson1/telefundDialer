@@ -7,18 +7,20 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 
+programName := "Dialer v1.0.0"
+
 loop 
 {
   if !FileExist("config.txt")
   {
-    InputBox, userName, Name, What is your first name?
+    InputBox, userName, %programName%, What is your first name?
     FileAppend, %userName%, config.txt
     FileAppend, `n1, config.txt
     FileAPpend, `nchrome.exe, config.txt
   }
   else 
   {
-    InputBox, widthOfSpreadSheet, Width, What is the width
+    InputBox, widthOfSpreadSheet, %programName%, What is the width
     FileReadLine, callerName, config.txt, 1
     FileReadLine, preNumber, config.txt, 2
     FileReadLine, browser, config.txt, 3
