@@ -74,8 +74,8 @@ dial:
 	Sleep sleepSpreadSheetTraversal 
 	Send, %preNUmber%
 	Sleep sleepSpreadSheetTraversal
-	firstCharacter = Substr(%clipboard%,1,1)
-	if (firstCharacter != "0")
+	firstCharacter := Substr(clipboard,1,1)
+	if (%firstCharacter% != "0")
 	{	
  		Send, 0
 	}
