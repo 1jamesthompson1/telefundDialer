@@ -8,7 +8,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 
 programName := "Dialer v1.0.1"
+sleepSpreadSheetTraversal := 100
 
+;Intro loop that will either retrive name and width or jsut width
 loop 
 {
   if !FileExist("config.txt")
@@ -32,8 +34,9 @@ loop
   }
 }
 
-sleepSpreadSheetTraversal := 100
+;-------Shortcut definition---------------
 
+;Bound the Rctrl to F14 so that it can be more easily workwith and prevent unforeseen effects in apps.
 Rctrl::F14
 
 ;Default shortcut for dial
@@ -50,11 +53,15 @@ Sleep Sleep sleepSpreadSheetTraversal
 Gosub, dial
 return
 
+;Print name and DateTime
 ^[::
 Gosub, printNameAndDateTime
 return
 
-
+;--------Subroutine defintions--------------
+/*
+* This will focus on the browser then move across width number of cells then copy and paste it into ucs. With or without an additional leading zero.
+*/
 dial:
 	WinWait ahk_exe %browser%
 	WinActivate
@@ -97,6 +104,10 @@ dial:
 	  }
 	Gosub, printNameAndDateTime
 	return
+
+/*
+* Simply print name and date in cells side by side one another.
+*/
 
 printNameAndDateTime:
       ;Name
