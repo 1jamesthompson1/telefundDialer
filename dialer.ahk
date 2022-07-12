@@ -13,25 +13,25 @@ sleepSpreadSheetTraversal := 100
 ;Intro loop that will either retrive name and width or jsut width
 loop 
 {
-  if !FileExist("config.txt")
+  if !FileExist("config.ini")
   {
     InputBox, userName, %programName%, What is your first name?
     if ErrorLevel
       ExitApp
-    FileAppend, %userName%, config.txt
-    FileAppend, `n1, config.txt
-    FileAppend, `n#, config.txt
-    FileAPpend, `nchrome.exe, config.txt
+    IniWrite, %userName%, config.ini, Settings, userName
+    IniWrite, 1, config.ini, Settings, preNumber
+    IniWrite, #, config.ini, Settings, postNumber
+    IniWrite, chrome.exe, config.ini, Settings, browser
   }
   else 
   {
     InputBox, widthOfSpreadSheet, %programName%, What is the width
     if ErrorLevel
       ExitApp
-    FileReadLine, callerName, config.txt, 1
-    FileReadLine, preNumber, config.txt, 2
-    FileReadLine, postNumber, config.txt, 3
-    FileReadLine, browser, config.txt, 4
+    IniRead, callerName, config.ini, Settings, userName
+    IniRead, preNumber, config.ini, Settings, preNumber
+    IniRead, postNumber, config.ini, Settings, postNumber
+    IniRead, browser, config.ini, Settings, browser
     break
   }
 }
