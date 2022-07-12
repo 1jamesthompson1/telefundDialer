@@ -10,7 +10,7 @@ Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 programName := "Dialer v1.0.2"
 sleepSpreadSheetTraversal := 100
 
-;Intro loop that will either retrive name and width or jsut width
+;----Intro loop that will either retrive name and width or just width---------
 loop 
 {
   if !FileExist("config.ini")
@@ -36,9 +36,9 @@ loop
   }
 }
 
-;-------Shortcut definition---------------
+;-------Shortcut definitions---------------
 
-;Bound the Rctrl to F14 so that it can be more easily workwith and prevent unforeseen effects in apps.
+;Bound the Rctrl to F14 so that it can be more easily work with and prevent unforeseen effects in apps.
 Rctrl::F14
 
 ;Default shortcut for dial
@@ -62,7 +62,8 @@ return
 
 ;--------Subroutine defintions--------------
 /*
-* This will focus on the browser then move across width number of cells then copy and paste it into ucs. With or without an additional leading zero.
+* This will focus on the browser then move across width number of cells then copy and paste it into UCS.
+* With or without an additional leading zero.
 */
 dial:
 	;Get right window active
@@ -86,7 +87,7 @@ dial:
 	WinActivate
 
 	Sleep sleepSpreadSheetTraversal 
-	Send, %preNUmber%
+	Send, %preNumber%
 	Sleep sleepSpreadSheetTraversal
 	firstCharacter := Substr(clipboard,1,1)
 	if (%firstCharacter% != "0")
