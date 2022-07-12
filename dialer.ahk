@@ -20,6 +20,7 @@ loop
       ExitApp
     FileAppend, %userName%, config.txt
     FileAppend, `n1, config.txt
+    FileAppend, `n#, config.txt
     FileAPpend, `nchrome.exe, config.txt
   }
   else 
@@ -29,7 +30,8 @@ loop
       ExitApp
     FileReadLine, callerName, config.txt, 1
     FileReadLine, preNumber, config.txt, 2
-    FileReadLine, browser, config.txt, 3
+    FileReadLine, postNumber, config.txt, 3
+    FileReadLine, browser, config.txt, 4
     break
   }
 }
@@ -63,8 +65,11 @@ return
 * This will focus on the browser then move across width number of cells then copy and paste it into ucs. With or without an additional leading zero.
 */
 dial:
+	;Get right window active
 	WinWait ahk_exe %browser%
 	WinActivate
+	
+	;Move to the phoneNumber column
 	Sleep sleepSpreadSheetTraversal 
 	Loop, %widthOfSpreadSheet%
 	  {
@@ -75,9 +80,11 @@ dial:
 	Sleep sleepSpreadSheetTraversal 
 	Send ^c
 	Sleep sleepSpreadSheetTraversal 
-
+	
+	;Paste number in UCS and dial
 	WinWait FormCallAssistance ahk_exe UCS_Client.exe
 	WinActivate
+
 	Sleep sleepSpreadSheetTraversal 
 	Send, %preNUmber%
 	Sleep sleepSpreadSheetTraversal
@@ -86,13 +93,15 @@ dial:
 	{	
  		Send, 0
 	}
-	Sleep sleepSpreadSheetTraversal
 	Sleep sleepSpreadSheetTraversal 
 	Send, %clipboard%
-	Sleep sleepSpreadSheetTraversal 
+	Sleep sleepSpreadSheetTraversal
+	Send, {%postNumber%}
+	Sleep sleepSpreadSheetTraversal
 	Send, {enter}
 	Sleep sleepSpreadSheetTraversal 
-
+	
+	;Move back to the caller column and print name and Date
 	WinWait ahk_exe %browser%
 	WinActivate
 	Sleep sleepSpreadSheetTraversal 
@@ -103,6 +112,7 @@ dial:
  	   Sleep sleepSpreadSheetTraversal 
 	  }
 	Gosub, printNameAndDateTime
+
 	return
 
 /*
