@@ -51,46 +51,46 @@ dial(width)
 	WinActivate
 
 	;Move to the phoneNumber column
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Loop %width%
 	  {
 	    Send, {Left}
-	    Sleep sleepSpreadSheetTraversal
+	    sleep()
 	  }
 
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send ^c
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 
 	;Paste number in UCS and dial
 	WinWait FormCallAssistance ahk_exe UCS_Client.exe
 	WinActivate
 
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, %preNumber%
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	firstCharacter := Substr(clipboard,1,1)
 	if (%firstCharacter% != "0")
 	{
  		Send, 0
 	}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, %clipboard%
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {%postNumber%}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {enter}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 
 	;Move back to the caller column and print name and Date
 	WinWait ahk_exe %browser%
 	WinActivate
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 
 	Loop % width - 2
 	  {
  	   Send, {Right}
- 	   Sleep sleepSpreadSheetTraversal
+ 	   sleep()
 	  }
 	printNameAndDateTime()
 
@@ -104,25 +104,30 @@ printNameAndDateTime()
 {
   global
   ;Name
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, %callerName%
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {Enter}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {Right}
-	Sleep sleepSpreadSheetTraversal
+
 	Send, {Up}
 	;DateTime
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	FormatTime, TimeString,, dd/MM/yy h:mm
 	Send, %TimeString%
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {Enter}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {Right}
-	Sleep sleepSpreadSheetTraversal
+	sleep()
 	Send, {Up}
 	return
+}
+
+sleep() {
+  global
+  Sleep, sleepSpreadSheetTraversal
 }
 ;-------Shortcut definitions---------------
 
@@ -137,9 +142,11 @@ return
 ;Shortcut to be used when a call has gone to answer phone
 ^]::
 Send, {Enter}
+sleep()
 Send, AP
+sleep()
 Send, {Enter}
-Sleep Sleep sleepSpreadSheetTraversal
+sleep()
 dial(widthOfSpreadSheet)
 return
 
