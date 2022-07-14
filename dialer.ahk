@@ -151,6 +151,6 @@ dial(widthOfSpreadSheet)
 return
 
 ;Print name and DateTime
-^[::
++F14::
 printNameAndDateTime()
 return
