@@ -43,7 +43,7 @@ loop
 * This will focus on the browser then move across width number of cells then copy and paste it into UCS.
 * With or without an additional leading zero.
 */
-dial()
+dial(width)
 {
   global
 	;Get right window active
@@ -52,7 +52,7 @@ dial()
 
 	;Move to the phoneNumber column
 	Sleep sleepSpreadSheetTraversal
-	Loop, %widthOfSpreadSheet%
+	Loop %width%
 	  {
 	    Send, {Left}
 	    Sleep sleepSpreadSheetTraversal
@@ -87,7 +87,7 @@ dial()
 	WinActivate
 	Sleep sleepSpreadSheetTraversal
 
-	Loop % widthOfSpreadSheet-2
+	Loop % width - 2
 	  {
  	   Send, {Right}
  	   Sleep sleepSpreadSheetTraversal
@@ -131,7 +131,7 @@ Rctrl::F14
 
 ;Default shortcut for dial
 F14::
-dial()
+dial(widthOfSpreadSheet)
 return
 
 ;Shortcut to be used when a call has gone to answer phone
@@ -140,7 +140,7 @@ Send, {Enter}
 Send, AP
 Send, {Enter}
 Sleep Sleep sleepSpreadSheetTraversal
-dial()
+dial(widthOfSpreadSheet)
 return
 
 ;Print name and DateTime
