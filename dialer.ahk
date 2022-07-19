@@ -162,6 +162,19 @@ F14::
 dial(widthOfSpreadSheet)
 return
 
+;Left modifer to get hte number to the left
+~Left & Rctrl::
+Send {Right}
+width := widthOfSpreadsheet + 1
+dial(width)
+return
+;Right modifier
+~Right & Rctrl::
+Send {Left}
+width := widthOfSpreadsheet - 1
+dial(width)
+return
+
 ;Print name and DateTime
 +F14::
 printNameAndDateTime()
