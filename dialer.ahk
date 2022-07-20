@@ -7,7 +7,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 
-programName := "Dialer v1.0.2"
+programName := "Dialer v1.1.0"
 sleepSpreadSheetTraversal := 100
 widthOfSpreadSheet := 0
 
@@ -53,15 +53,13 @@ dial(width)
 	;----Move to the phoneNumber column-----
 
   ;Check to see if it is ap or on the wrong row.
-	sleep()
+  sleep()
   Send, ^c
   sleep()
   clipboard := StrReplace(clipboard, "`r`n")
   if (clipboard != "") { ;If cell is not empty
-    MsgBox, Heading down
     Send, {Down}
-  } else { ;IF cell is empty
-    MsgBox, checking for AP
+  } else { ;If cell is empty
     Send, {Left}
     sleep()
     Send, ^c
