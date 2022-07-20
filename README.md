@@ -30,26 +30,41 @@ Here is an example of me enabling UCS call asisstance:
 ![Setup_UCS](https://user-images.githubusercontent.com/103026808/177873381-1dbade8d-e1a4-416d-9505-b6934ec63e8d.gif)
 
 ### Using
+
+#### Running script  
+
 You will have to run the dialer.exe file at the start of your shift and any time you want to change the width of the spreadsheet.
 To do this simply
 1. Double click on dialer.exe
 2. Enter the width of the spreadsheet  
 The script is now running and can be used.  
-There are 3 shortcuts built into the script.  
-- Rctrl : Runs the default calling functionality. So copy the number found in the sheet into ucs and print your name and DateTime in appropriate cells.
-- Lctrl + ] : Enters AP into your current cell then runs the default calling functionality on the row below.
-- Lctrl + [ : Enters your name into the current cell selected then date time into the cell to the right.
+See below for how to use the script
+#### Dial
+
+**Shortcut:** Rctrl  
+**Basic Functionality**  
+This action will start at the outcome column. Move left in the spreadsheet the entered number of times then copy and enter the phone number into the UCS box. Then it will head back to the spreadsheet and navigate to where your Name and the date should go and enter those accordingly.  
+**Special Cases**  
+If the call date and time is already filled out it will enter in AP into outcome column and call the row below.  
+If the current call attempt has an outcome already entered there it will simply drop down to the row below and dial instead.  
+**Modifiers:**  
+ - Left or Right arrow: Pressing either of the arrows at the same time as Rctrl will make the script grab the phone number from the column to either the left or right (depending on the direction of the arrow). You might notice that when you press left or right arrow that you move your selected cell one of those directions but it wont affect it..  
+ - RShift: Pressing Right SHift at the same time as Rctrl will only enter your name and date time. It must be triggered on the caller name column to work correctly.  
+
+**Exmaple** I first use the differnt shortcuts and features as follows; default dial, auto ap dial, auto skip row dial, left modifier, right modifier.
+
+![using](https://user-images.githubusercontent.com/103026808/179895456-e70ad087-3ea3-4db0-8d3d-b7b8e95c5d14.gif)
+
 The **width** of the sheet is the number of cells between the outcome column and the phone number column you are trying to call. Image it like the number of times you would have to press the left button to get to the right number cell (as this is literally what it is doing). Here is a photo example of a width of 5 when doing first calls.
 ![image](https://user-images.githubusercontent.com/103026808/177656855-00983701-443d-42dc-8e00-126ba4ece2de.png)
-Note when you do second calls or change campaign you will have to redo step 1 and 2 to change the width.  
-Here is me stepping through the steps and using the three shortcuts in order:  
-![Using](https://user-images.githubusercontent.com/103026808/177872509-a823e0f3-264f-4e61-bb4d-b8244c02ca4e.gif)
+
 
 ### Changing setting
-Three settings can be edited in the config.txt file. These are in order of the line they are found on.
-1. Caller Name
-2. preNumber - This is entered before the number is copied from the spreadsheet
-3. browser executable string. This can be set to; "chrome.exe" for Chrome, "firefox.exe" for Firefox and, "msedge.exe" for Microsoft Edge.
+Four settings can be edited in the config.txt file. These are in order of the line they are found on.
+Caller Name
+preNumber - This is entered before the number is copied from the spreadsheet
+postNumber - This is entered after the unmber in UCS but before pressing enter.
+browser executable string. This can be set to; "chrome.exe" for Chrome, "firefox.exe" for Firefox and, "msedge.exe" for Microsoft Edge.
 
 ## Repo Guide
 
