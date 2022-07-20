@@ -46,12 +46,35 @@ loop
 dial(width)
 {
   global
-	;Get right window active
+	;-----Get right window active------
 	WinWait ahk_exe %browser%
 	WinActivate
 
-	;Move to the phoneNumber column
+	;----Move to the phoneNumber column-----
+
+  ;Check to see if it is ap or on the wrong row.
 	sleep()
+  Send, ^c
+  sleep()
+  clipboard := StrReplace(clipboard, "`r`n")
+  if (clipboard != "") { ;If cell is not empty
+    MsgBox, Heading down
+    Send, {Down}
+  } else { ;IF cell is empty
+    MsgBox, checking for AP
+    Send, {Left}
+    sleep()
+    Send, ^c
+    sleep()
+    clipboard := StrReplace(clipboard, "`r`n")
+    Send, {Right}
+    if (clipboard != "") { ;If cell is not empty
+      sleep()
+      Send, AP
+      sleep()
+      Send, {Enter}
+    }
+  }
 	Loop %width%
 	  {
 	    Send, {Left}
@@ -62,7 +85,7 @@ dial(width)
 	Send ^c
 	sleep()
 
-	;Paste number in UCS and dial
+	;----Paste number in UCS and dial-----
 	WinWait FormCallAssistance ahk_exe UCS_Client.exe
 	WinActivate
 
@@ -82,7 +105,7 @@ dial(width)
 	Send, {enter}
 	sleep()
 
-	;Move back to the caller column and print name and Date
+	;----Move back to the caller column and print name and Date------
 	WinWait ahk_exe %browser%
 	WinActivate
 	sleep()
@@ -110,7 +133,7 @@ printNameAndDateTime()
 	Send, {Enter}
 	sleep()
 	Send, {Right}
-
+  sleep()
 	Send, {Up}
 	;DateTime
 	sleep()
@@ -139,15 +162,17 @@ F14::
 dial(widthOfSpreadSheet)
 return
 
-;Shortcut to be used when a call has gone to answer phone
-^]::
-Send, {Enter}
-sleep()
-Send, AP
-sleep()
-Send, {Enter}
-sleep()
-dial(widthOfSpreadSheet)
+;Left modifer to get hte number to the left
+~Left & Rctrl::
+Send {Right}
+width := widthOfSpreadsheet + 1
+dial(width)
+return
+;Right modifier
+~Right & Rctrl::
+Send {Left}
+width := widthOfSpreadsheet - 1
+dial(width)
 return
 
 ;Print name and DateTime
