@@ -129,21 +129,13 @@ printNameAndDateTime()
 	sleep()
 	Send, %callerName%
 	sleep()
-	Send, {Enter}
-	sleep()
-	Send, {Right}
-  sleep()
-	Send, {Up}
+	Send, {Tab}
 	;DateTime
 	sleep()
 	FormatTime, TimeString,, dd/MM/yy h:mm
 	Send, %TimeString%
 	sleep()
-	Send, {Enter}
-	sleep()
-	Send, {Right}
-	sleep()
-	Send, {Up}
+	Send, {Tab}
 	return
 }
 
