@@ -7,8 +7,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 Menu, Tray, Icon, % A_WinDir "\system32\ddores.dll", 7
 
-programName := "Dialer v1.1.0"
-sleepSpreadSheetTraversal := 100
+programName := "Dialer v1.1.1"
 widthOfSpreadSheet := 0
 
 
@@ -24,6 +23,7 @@ loop
     IniWrite, 1, config.ini, Settings, preNumber
     IniWrite, #, config.ini, Settings, postNumber
     IniWrite, chrome.exe, config.ini, Settings, browser
+	Iniwrite, 100, config.ini, Settings, sleepTime
   }
   else
   {
@@ -34,6 +34,7 @@ loop
     IniRead, preNumber, config.ini, Settings, preNumber
     IniRead, postNumber, config.ini, Settings, postNumber
     IniRead, browser, config.ini, Settings, browser
+	IniRead, sleepTime, config.ini, Settings, sleepTime
     break
   }
 }
@@ -128,27 +129,19 @@ printNameAndDateTime()
 	sleep()
 	Send, %callerName%
 	sleep()
-	Send, {Enter}
-	sleep()
-	Send, {Right}
-  sleep()
-	Send, {Up}
+	Send, {Tab}
 	;DateTime
 	sleep()
 	FormatTime, TimeString,, dd/MM/yy h:mm
 	Send, %TimeString%
 	sleep()
-	Send, {Enter}
-	sleep()
-	Send, {Right}
-	sleep()
-	Send, {Up}
+	Send, {Tab}
 	return
 }
 
 sleep() {
   global
-  Sleep, sleepSpreadSheetTraversal
+  Sleep, sleepTime
 }
 ;-------Shortcut definitions---------------
 
