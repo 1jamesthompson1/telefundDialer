@@ -60,12 +60,19 @@ The **width** of the sheet is the number of cells between the outcome column and
 
 
 ### Changing setting
-Four settings can be edited in the config.txt file. These are in order of the line they are found on.
-Caller Name
-preNumber - This is entered before the number is copied from the spreadsheet
-postNumber - This is entered after the unmber in UCS but before pressing enter.
-browser executable string. This can be set to; "chrome.exe" for Chrome, "firefox.exe" for Firefox and, "msedge.exe" for Microsoft Edge.
+Settings can be changed for your particular dialer installation.
 
+This can be done by using the config.ini file. It is important that you dont leave spaces where there arent supposed to be. For example after the equals character should be the value (no space inbetween or after). If you think that you have broken it you can simply delete the file and re run the script and it will set itself up again. You must not forget to save youo changes before closing the file.
+
+Settings that you might want to change:
+ - **sleepTime**: This is how much the script will sleep between each action. Default is 100 but for a slow computer you could try 150 or 200
+ - **browser**: what the script will focus on. Default is chrome.exe.
+ - **userName**: The name that the script will enter into the workbook. Default is what you enter on first running the script.
+ 
+ Here is a demonstration of me changing sleepTime from 100 to 150:
+ 
+ ![image](instructionMedia/changingSetting.gif)
+ 
 ## Repo Guide
 
 ### Commit messages
