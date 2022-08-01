@@ -62,7 +62,7 @@ The **width** of the sheet is the number of cells between the outcome column and
 ### Changing setting
 Settings can be changed for your particular dialer installation.
 
-This can be done by using the config.ini file. It is important that you dont leave spaces where there arent supposed to be. For example after the equals character should be the value (no space inbetween or after). If you think that you have broken it you can simply delete the file and re run the script and it will set itself up again. You must not forget to save youo changes before closing the file.
+This can be done by using the config.ini file. It is important that you dont leave spaces where there arent supposed to be. For example after the equals character should be the value (no space inbetween or after). If you think that you have broken it you can simply delete the file and re run the script and it will set itself up again. You must not forget to save youo changes before closing the file. The changes wont take effect until you re run the script dialer.exe file.
 
 Settings that you might want to change:
  - **sleepTime**: This is how much the script will sleep between each action. Default is 100 but for a slow computer you could try 150 or 200
