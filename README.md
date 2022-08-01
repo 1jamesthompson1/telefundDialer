@@ -73,6 +73,19 @@ Settings that you might want to change:
  
  ![image](instructionMedia/changingSetting.gif)
  
+ ### Updating version
+ Updated version of this script will be released on occasion to fix things or make them better.
+ 
+ To update you simply need to delete all your previous version files. Then you simply install the latest version found in the releases seciton. It will automaticlly show the most recent at the top. 
+ 
+  Here is a demonstration of doing this:
+ 
+ ![Updating version](instructionMedia/updatingVersion.gif)
+ 
+ When deleting previous version files you must make sure that it isnt current running. If it comes up with an error you can delete it by going to bottom right hand of your screen. Left clicking up arror. Right clicking on the headset icon. Left click exit. See below:
+ 
+ ![Exiting dialer](instructionMedia/exitingDialer.png)
+ 
 ## Repo Guide
 
 ### Commit messages
